@@ -16,7 +16,7 @@ const geistMono = localFont({
 });
 
 const meta = {
-  title: 'R.A. Scheuring',
+  title: 'An Old World Killer is Back.',
   description: 'Author of The DRYP Trilogy',
   robots: 'follow, index',
   favicon: '/favicon.ico',

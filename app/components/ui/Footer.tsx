@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FaTwitter, FaFacebook } from 'react-icons/fa'
+import { Twitter, Facebook } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -17,7 +17,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="text-gray-300 hover:text-yellow-600 transition-colors duration-200"
             >
-              <FaTwitter className="w-6 h-6" />
+              <Twitter className="w-6 h-6" />
               <span className="sr-only">Twitter</span>
             </Link>
             <Link 
@@ -26,7 +26,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="text-gray-300 hover:text-yellow-600 transition-colors duration-200"
             >
-              <FaFacebook className="w-6 h-6" />
+              <Facebook className="w-6 h-6" />
               <span className="sr-only">Facebook</span>
             </Link>
           </nav>

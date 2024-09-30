@@ -28,7 +28,7 @@ export default function BacteriaBackground() {
 
   const BacteriaSVG = ({ size }: { size: number }) => (
     <Image
-      src="/bacteria.png"
+      src="https://res.cloudinary.com/dko9vskvn/image/upload/v1727676090/bacteria_mdeifq.png"
       alt="Bacteria"
       width={size}
       height={size}

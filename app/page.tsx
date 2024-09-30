@@ -35,7 +35,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-yellow-600 mb-6">Books</h2>
             <Link href="https://www.amazon.com/dp/B08D6Z3L3R">
               <Image
-                src="/books.png"
+                src="https://res.cloudinary.com/dko9vskvn/image/upload/v1727676098/books_vaa8ej.png"
                 alt="DRYP Trilogy Books"
                 width={600}
                 height={400}

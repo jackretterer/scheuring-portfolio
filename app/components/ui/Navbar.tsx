@@ -27,7 +27,7 @@ export default function Navbar() {
         {['Home', 'Books', 'About', 'Contact'].map((item) => (
           <Link
             key={item}
-            href={`/${item.toLowerCase()}`}
+            href={`#${item.toLowerCase()}`}
             className="text-gray-300 hover:text-yellow-600 font-medium"
             prefetch={false}
             onClick={() => setIsMenuOpen(false)}

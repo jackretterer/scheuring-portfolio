@@ -9,7 +9,7 @@ export default function Home() {
       <BacteriaBackground />
       <main className="relative">
         {/* Hero Section */}
-        <section className="h-[calc(100vh-5rem)] flex flex-col items-center pt-[15%] text-center p-8">
+        <section id="home" className="h-[calc(100vh-5rem)] flex flex-col items-center pt-[15%] text-center p-8">
           <div className="max-w-4xl mx-auto space-y-6 bg-black bg-opacity-70 p-8 rounded-lg">
             <h1 className="text-5xl md:text-7xl font-bold text-yellow-600 mb-4 leading-tight">
               An Old World Killer<br />is Back
@@ -30,7 +30,7 @@ export default function Home() {
         </section>
 
         {/* Books Section */}
-        <section className="min-h-screen flex flex-col items-center justify-center p-8">
+        <section id="books" className="min-h-screen flex flex-col items-center justify-center p-8">
           <div className="bg-black bg-opacity-70 p-8 rounded-lg">
             <h2 className="text-3xl font-bold text-yellow-600 mb-6">Books</h2>
             <Link href="https://www.amazon.com/dp/B08D6Z3L3R">
@@ -46,7 +46,7 @@ export default function Home() {
         </section>
 
         {/* Author and Bio Section */}
-        <section className="min-h-screen flex items-center justify-center p-8">
+        <section id="about" className="min-h-screen flex items-center justify-center p-8">
           <div className="bg-black bg-opacity-70 p-8 rounded-lg max-w-5xl w-full">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
               <div className="flex-1 text-left">
@@ -74,7 +74,7 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section className="min-h-screen flex flex-col items-center justify-center p-8">
+        <section id="contact" className="min-h-screen flex flex-col items-center justify-center p-8">
           <div className="bg-black bg-opacity-70 p-8 rounded-lg max-w-5xl w-full">
             <div className="flex flex-col md:flex-row gap-8">
               <div className="flex-1">

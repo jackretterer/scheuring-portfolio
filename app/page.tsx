@@ -24,7 +24,7 @@ export default function Home() {
         <section className="min-h-screen flex flex-col items-center justify-center p-8">
           <div className="bg-black bg-opacity-70 p-9 rounded-lg">
             <h2 className="text-3xl md:text-5xl font-bold text-yellow-600 mb-4">
-              Amid a lethal pandemic's sweep, a chilling revelation emerges: the plague isn't the deadliest force at play—it's the darkness it unleashes in humanity.
+              Amid a lethal pandemic&apos;s sweep, a chilling revelation emerges: the plague isn&apos;t the deadliest force at play—it&apos;s the darkness it unleashes in humanity.
             </h2>
           </div>
         </section>

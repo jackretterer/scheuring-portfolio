@@ -25,7 +25,6 @@ BacteriaSVG.displayName = 'BacteriaSVG';
 
 export default function BacteriaBackground() {
   const [bacteria, setBacteria] = useState<Bacteria[]>([]);
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [isAtTop, setIsAtTop] = useState(true);
 
   const generateNewBacteria = useCallback((count: number): Bacteria[] => {
@@ -47,7 +46,6 @@ export default function BacteriaBackground() {
   const handleScroll = useCallback(() => {
     const currentScrollY = window.scrollY;
     const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-    setScrollPosition(currentScrollY);
     setIsAtTop(currentScrollY === 0);
 
     // Calculate the scroll percentage

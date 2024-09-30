@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo, memo } from 'react';
 import Image from 'next/image';
 
 interface Bacteria {
@@ -10,6 +10,18 @@ interface Bacteria {
   size: number;
   rotation: number;
 }
+
+const BacteriaSVG = memo(({ size }: { size: number }) => (
+  <Image
+    src="https://res.cloudinary.com/dko9vskvn/image/upload/v1727676090/bacteria_mdeifq.png"
+    alt="Bacteria"
+    width={size}
+    height={size}
+    className="object-contain"
+  />
+));
+
+BacteriaSVG.displayName = 'BacteriaSVG';
 
 export default function BacteriaBackground() {
   const [bacteria, setBacteria] = useState<Bacteria[]>([]);
@@ -26,48 +38,51 @@ export default function BacteriaBackground() {
     }));
   }, []);
 
-  const BacteriaSVG = ({ size }: { size: number }) => (
-    <Image
-      src="https://res.cloudinary.com/dko9vskvn/image/upload/v1727676090/bacteria_mdeifq.png"
-      alt="Bacteria"
-      width={size}
-      height={size}
-      className="object-contain"
-    />
-  );
+  const initialBacteria = useMemo(() => generateNewBacteria(10), [generateNewBacteria]);
 
   useEffect(() => {
-    setBacteria(generateNewBacteria(2)); // Start with five bacteria
+    setBacteria(initialBacteria);
+  }, [initialBacteria]);
+
+  const handleScroll = useCallback(() => {
+    const currentScrollY = window.scrollY;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    setScrollPosition(currentScrollY);
+    setIsAtTop(currentScrollY === 0);
+
+    // Calculate the scroll percentage
+    const scrollPercentage = currentScrollY / scrollHeight;
+
+    // Adjust the bacteria count based on scroll percentage
+    const targetBacteriaCount = Math.floor(10 + (290 * scrollPercentage)); // Max 300 bacteria
+
+    setBacteria(prevBacteria => {
+      if (prevBacteria.length < targetBacteriaCount) {
+        // Add bacteria
+        return [...prevBacteria, ...generateNewBacteria(targetBacteriaCount - prevBacteria.length)];
+      } else if (prevBacteria.length > targetBacteriaCount) {
+        // Remove bacteria
+        return prevBacteria.slice(0, targetBacteriaCount);
+      }
+      return prevBacteria;
+    });
   }, [generateNewBacteria]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setScrollPosition(currentScrollY);
-      setIsAtTop(currentScrollY === 0);
-
-      // Calculate the scroll percentage
-      const scrollPercentage = currentScrollY / scrollHeight;
-
-      // Adjust the bacteria count based on scroll percentage
-      const targetBacteriaCount = Math.floor(10 + (290 * scrollPercentage)); // Max 300 bacteria
-
-      setBacteria(prevBacteria => {
-        if (prevBacteria.length < targetBacteriaCount) {
-          // Add bacteria
-          return [...prevBacteria, ...generateNewBacteria(targetBacteriaCount - prevBacteria.length)];
-        } else if (prevBacteria.length > targetBacteriaCount) {
-          // Remove bacteria
-          return prevBacteria.slice(0, targetBacteriaCount);
-        }
-        return prevBacteria;
-      });
+    let ticking = false;
+    const scrollListener = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [generateNewBacteria]);
+    window.addEventListener('scroll', scrollListener);
+    return () => window.removeEventListener('scroll', scrollListener);
+  }, [handleScroll]);
 
   return (
     <div
@@ -80,11 +95,9 @@ export default function BacteriaBackground() {
           key={b.id}
           className="absolute"
           style={{
-            left: `${b.x}%`,
-            top: `${b.y}%`,
+            transform: `translate(${b.x}vw, ${b.y}vh) rotate(${b.rotation}deg)`,
             width: `${b.size}px`,
             height: `${b.size}px`,
-            transform: `rotate(${b.rotation}deg)`,
           }}
         >
           <BacteriaSVG size={b.size} />

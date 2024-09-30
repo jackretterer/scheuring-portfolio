@@ -15,14 +15,48 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: "RA Scheuring",
-  description: "Author of The DRYP Trilogy",
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-icon.png',
-  },
+const meta = {
+  title: 'R.A. Scheuring',
+  description: 'Author of The DRYP Trilogy',
+  robots: 'follow, index',
+  favicon: '/favicon.ico',
+  image: '/og-image.png',
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: meta.title,
+    description: meta.description,
+    referrer: 'origin-when-cross-origin',
+    keywords: ['Rachel Scheuring', 'DRYP', 'Health', 'Pandemic', 'Novel'],
+    authors: [{ name: 'RA Scheuring', url: 'https://rascheuring.com/' }],
+    creator: 'RA Scheuring',
+    publisher: 'RA Scheuring',
+    robots: meta.robots,
+    icons: { icon: meta.favicon },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      images: [
+        {
+          url: meta.image,
+          width: 1200,
+          height: 630,
+          alt: 'RA Scheuring',
+        },
+      ],
+      siteName: 'RA Scheuring',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@rascheuring',
+      creator: '@rascheuring',
+      title: meta.title,
+      description: meta.description,
+      images: [meta.image],
+    },
+  };
+}
 
 export default function RootLayout({
   children,

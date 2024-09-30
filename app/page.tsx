@@ -62,7 +62,7 @@ export default function Home() {
               </div>
               <div className="flex-shrink-0">
                 <Image
-                  src="/headshot.png"
+                  src="https://res.cloudinary.com/dko9vskvn/image/upload/v1727676097/headshot_gwj0o1.png"
                   alt="R.A. Scheuring"
                   width={300}
                   height={300}

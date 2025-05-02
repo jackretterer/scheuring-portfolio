@@ -15,14 +15,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center" prefetch={false}>
-            <span className="text-xl font-bold text-yellow-600">R.A. Scheuring</span>
+            <span className="text-3xl font-bold text-yellow-600">R.A. Scheuring</span>
           </Link>
           <nav className="hidden md:flex space-x-8">
             {menuItems.map((item) => (
               <Link
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-gray-300 hover:text-yellow-600 transition-colors duration-200"
+                className="text-lg text-gray-300 hover:text-yellow-600 transition-colors duration-200"
                 prefetch={false}
               >
                 {item}
@@ -53,7 +53,7 @@ export default function Navbar() {
               <Link
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-yellow-600 hover:bg-gray-900 transition-colors duration-200"
+                className="block px-3 py-2 text-lg font-medium text-gray-300 hover:text-yellow-600 hover:bg-gray-900 transition-colors duration-200"
                 prefetch={false}
                 onClick={() => setIsMenuOpen(false)}
               >

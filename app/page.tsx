@@ -8,8 +8,36 @@ export default function Home() {
     <div className="relative min-h-screen bg-black text-gray-300">
       <BacteriaBackground />
       <main className="relative">
+        {/* Books Section with Image */}
+        <section id="books" className="min-h-screen flex flex-col items-center justify-center p-8">
+          <div className="bg-black bg-opacity-70 p-8 rounded-lg max-w-6xl w-full">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="md:w-1/2">
+                <Image
+                  src="https://res.cloudinary.com/dko9vskvn/image/upload/v1727676099/pfp_omoze0.png"
+                  alt="Book Cover"
+                  width={400}
+                  height={600}
+                  className="rounded-lg shadow-lg"
+                />
+              </div>
+              <div className="md:w-1/2">
+                <Link href="https://www.amazon.com/dp/B08D6Z3L3R">
+                  <Image
+                    src="https://res.cloudinary.com/dko9vskvn/image/upload/v1727676098/books_vaa8ej.png"
+                    alt="DRYP Trilogy Books"
+                    width={500}
+                    height={300}
+                    className="rounded-lg shadow-lg"
+                  />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+        
         {/* Hero Section */}
-        <section id="home" className="h-[calc(100vh-5rem)] flex flex-col items-center pt-[15%] text-center p-8">
+        <section id="home" className="h-[50vh] flex flex-col items-center pt-[15%] text-center p-8">
           <div className="max-w-4xl mx-auto space-y-6 bg-black bg-opacity-70 p-8 rounded-lg">
             <h1 className="text-5xl md:text-7xl font-bold text-yellow-600 mb-4 leading-tight">
               An Old World Killer<br />is Back
@@ -26,22 +54,6 @@ export default function Home() {
             <h2 className="text-3xl md:text-5xl font-bold text-yellow-600 mb-4">
               Amid a lethal pandemic&apos;s sweep, a chilling revelation emerges: the plague isn&apos;t the deadliest force at play—it&apos;s the darkness it unleashes in humanity.
             </h2>
-          </div>
-        </section>
-
-        {/* Books Section */}
-        <section id="books" className="min-h-screen flex flex-col items-center justify-center p-8">
-          <div className="bg-black bg-opacity-70 p-8 rounded-lg">
-            <h2 className="text-3xl font-bold text-yellow-600 mb-6">Books</h2>
-            <Link href="https://www.amazon.com/dp/B08D6Z3L3R">
-              <Image
-                src="https://res.cloudinary.com/dko9vskvn/image/upload/v1727676098/books_vaa8ej.png"
-                alt="DRYP Trilogy Books"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-lg"
-              />
-            </Link>
           </div>
         </section>
 
